@@ -6,10 +6,9 @@ on:
 
 
 jobs:
-  setup: 
+  build: 
     runs-on: ubuntu-latest
     steps:
-    - id: setup
     - name: Checkout Code
       uses: actions/checkout@v3
 

@@ -30,9 +30,17 @@ jobs:
       run: |
         echo $DATE
         echo $NEW_VERSION
+    
+    - name: Compare Versions
+      run: |
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "RESULT<<$EOF" >> "$GITHUB_ENV"
+        make compare_versions >> "$GITHUB_ENV"
+        echo "$EOF" >> "$GITHUB_ENV"
+
 
     - name: Create release (if new version)
-      if: ${{ env.RESULT }} == 'FAIL'
+      if: ${{ env.RESULT }} == PASS
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       run: |

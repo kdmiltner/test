@@ -15,7 +15,7 @@ jobs:
 
     - name: Get release status
       run: |
-        echo "$(make date)" >> $GITHUB_ENV
+        echo "DATE=$(make date)" >> $GITHUB_ENV
 
     # - name: Set New Version
     #   run: 

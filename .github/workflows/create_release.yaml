@@ -20,7 +20,7 @@ jobs:
         echo "DATE=$(make date)" >> ${GITHUB_ENV}
 
     - name: Create release (if new version)
-      if: env.RESULT == 'PASS'
+      if: ${{ env.RESULT }} == 'PASS'
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       run: |

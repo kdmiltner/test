@@ -12,13 +12,13 @@ SHOW_TAGS=$(shell git log --oneline --decorate=short)
 
 
 date:
-	date "+%Y-%m-%dT%H:%M:%SZ%z"
+	@date "+%Y-%m-%dT%H:%M:%SZ%z"
 
 git_version:
-	echo $(GIT_TAG)
+	@echo $(GIT_TAG)
 
 code_version:
-	echo $(CODE_VERSION)
+	@echo ${CODE_VERSION}
 
 compare_versions:
 	@if [ $(GIT_TAG) = $(CODE_VERSION) ]; then\
@@ -31,4 +31,4 @@ compare_versions:
 
 create_release:
 	@git tag $(CODE_VERSION) 
-	echo $(CREATE_RELEASE)
+	@echo $(CREATE_RELEASE)

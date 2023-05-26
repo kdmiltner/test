@@ -25,11 +25,6 @@ jobs:
         echo "NEW_VERSION<<$EOF" >> "$GITHUB_ENV"
         make code_version >> "$GITHUB_ENV"
         echo "$EOF" >> "$GITHUB_ENV"
-
-    - name: Echo Environment Variables
-      run: |
-        echo $DATE
-        echo $NEW_VERSION
     
     - name: Compare Versions
       run: |
@@ -38,6 +33,11 @@ jobs:
         make compare_versions >> "$GITHUB_ENV"
         echo "$EOF" >> "$GITHUB_ENV"
 
+    - name: Echo Environment Variables
+      run: |
+        echo $DATE
+        echo $NEW_VERSION
+        echo $RESULT
 
     - name: Create release (if new version)
       if: ${{ env.RESULT }} == PASS

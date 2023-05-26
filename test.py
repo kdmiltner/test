@@ -15,5 +15,11 @@ def another_test():
     print("Hello world")
 
 
+def yet_another_test():
+    """Simulates adding another function
+    """
+    print("Hello world v2")
+
+
 if __name__ == '__main__':
     run_test()

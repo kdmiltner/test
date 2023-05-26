@@ -16,7 +16,7 @@ jobs:
     - name: Get release status
       run: |
         git fetch --all
-        echo "GIT_VERSION<<$(make git_version)" >> $GITHUB_ENV
+        echo "GIT_VERSION<<$(make git_version)" >> "$GITHUB_ENV"
 
     # - name: Set New Version
     #   run: 

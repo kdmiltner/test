@@ -26,8 +26,7 @@ compare_versions:
 		$(CODE_VERSION) is not greater than $(GIT_TAG).\
 		Please update the $(FILE) file.;\
 	else\
-		echo PASS\
-		echo $(NEW_VERSION);\
+		echo PASS;\
 	fi
 
 create_release:

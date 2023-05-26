@@ -7,15 +7,17 @@ on:
 
 jobs:
   create_release: 
+    name: Create Release
     runs_on: ubuntu-latest
-    name: Get release status
+    
     steps:
-    - uses: actions/checkout@v3
     - name: Get release status
+      uses: actions/checkout@v3
       run: |
         echo "RESULT=$(make compare_versions)" >> ${GITHUB_ENV}
         echo "NEW_VERSION=$(make code_version)" >> ${GITHUB_ENV}
         echo "DESCRIPTION=Release $(make code_version)" >> ${GITHUB_ENV}
+
     - name: Create release (if new version)
       if: env.RESULT == PASS
       env:

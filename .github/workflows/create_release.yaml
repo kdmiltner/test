@@ -15,7 +15,7 @@ jobs:
 
     - name: Set Environment Variables
       run: |
-        echo "GH_VERSION=$(make git_version)" >> $GITHUB_ENV
+        echo "GH_VERSION<<$(make git_version)" >> $GITHUB_ENV
       # echo "NEW_VERSION=$(make code_version)" >> $GITHUB_ENV
         
     - name: Echo Environment Variables

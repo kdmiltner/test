@@ -7,8 +7,10 @@ on:
 
 jobs:
   create_release: 
-    runs_on: cfacrndev
+    runs_on: ubuntu-latest
+    name: Get release status
     steps:
+    - uses: actions/checkout@v3
     - name: Get release status
       run: |
         echo "RESULT=$(make compare_versions)" >> ${GITHUB_ENV}

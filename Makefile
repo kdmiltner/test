@@ -2,7 +2,7 @@
 FILE=_version # Reference to file that maintains the version within our codebase
 CODE_VERSION=$(shell cat ${FILE}) # Get version that's set in our codebase
 NEW_VERSION=$(CODE_VERSION)
-DATE=$(shell date "+%Y-%m-%dT%H:%M:%S")
+DATE=$(shell date "+%Y-%m-%dT%H:%M:%SZ%z")
 GIT_TAG=$(shell git describe --tags --abbrev=0 --exclude '*-dev' --exclude '*-qa' 2>/dev/null \
 && : || git rev-list --max-parents=0 --abbrev-commit HEAD) # Get the Git Tag, which represents the version set in Git
 GITHUB_TOKEN=

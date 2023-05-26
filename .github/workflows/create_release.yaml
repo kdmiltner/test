@@ -13,16 +13,16 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Set Environment Variables
+    - name: Set DATE
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        echo "GH_VERSION<<$EOF" >> "$GITHUB_ENV"
-        make git_version >> "$GITHUB_ENV"
+        echo "DATE<<$EOF" >> "$GITHUB_ENV"
+        make date >> "$GITHUB_ENV"
         echo "$EOF" >> "$GITHUB_ENV"
         
     - name: Echo Environment Variables
       run: |
-        echo $GH_VERSION
+        echo $DATE
 
     # - name: Create release (if new version)
     #   if: ${{ env.RESULT }} == 'PASS'

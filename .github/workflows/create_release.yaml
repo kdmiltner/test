@@ -16,7 +16,7 @@ jobs:
     - name: Get release status
       run: |
         VAR1=$(make git_version)
-        echo "GIT_VERSION<<VAR1" >> "$GITHUB_ENV"
+        echo "GIT_VERSION<<$VAR1" >> "$GITHUB_ENV"
 
     # - name: Set New Version
     #   run: 

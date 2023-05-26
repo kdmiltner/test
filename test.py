@@ -9,5 +9,11 @@ def run_test():
         i+=1
 
 
+def another_test():
+    """Simulates adding another function
+    """
+    print("Hello world")
+
+
 if __name__ == '__main__':
     run_test()

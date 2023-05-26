@@ -16,9 +16,9 @@ jobs:
     - name: Set Date
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        "DATE<<$EOF" >> "$GITHUB_ENV"
+        echo "DATE<<$EOF" >> "$GITHUB_ENV"
         make date >> "$GITHUB_ENV"
-        "$EOF" >> "$GITHUB_ENV"
+        echo "$EOF" >> "$GITHUB_ENV"
     
     - name: Set New Version
       run: |

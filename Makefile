@@ -9,6 +9,7 @@ CREATE_PRERELEASE=$(shell curl -L -X POST -H "Accept: application/vnd.github+jso
 SHOW_TAGS=$(shell git log --oneline --decorate=short)
 
 
+
 git_version:
 	echo $(GIT_TAG)
 

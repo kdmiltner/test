@@ -1,6 +1,6 @@
 
 FILE=_version # Reference to file that maintains the version within our codebase
-CODE_VERSION=$(shell cat ${FILE}) # Get version that's set in our codebase
+CODE_VERSION=$(shell cat ${FILE} | tr -d '[:blank:]') # Get version that's set in our codebase
 NEW_VERSION=$(CODE_VERSION)
 DATE=$(shell date "+%Y-%m-%dT%H:%M:%SZ%z")
 GIT_TAG=$(shell git describe --tags --abbrev=0 --exclude '*-dev' --exclude '*-qa' 2>/dev/null \

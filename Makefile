@@ -25,4 +25,4 @@ compare_versions:
 
 create_release:
 	@git tag $(CODE_VERSION) 
-	echo $(CREATE_RELEASE)
+	echo $(CREATE_PRERELEASE)

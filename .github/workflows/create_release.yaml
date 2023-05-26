@@ -28,10 +28,11 @@ jobs:
 
     - name: Set Git Version
       run: |
-        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        echo "GIT_VERSION<<$EOF" >> "$GITHUB_ENV"
-        make git_version >> "$GITHUB_ENV"
-        echo "$EOF" >> "$GITHUB_ENV"
+        git describe --tags | awk '{print substr($1,2,5)}'
+# EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+# echo "GIT_VERSION<<$EOF" >> "$GITHUB_ENV"
+# make git_version >> "$GITHUB_ENV"
+# echo "$EOF" >> "$GITHUB_ENV"
     
     - name: Compare Versions
       run: |

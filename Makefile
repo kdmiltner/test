@@ -9,7 +9,6 @@ CREATE_RELEASE=$(shell curl -L -X POST -H "Accept: application/vnd.github+json" 
 SHOW_TAGS=$(shell git log --oneline --decorate=short)
 
 
-
 date:
 	@date "+%Y-%m-%dT%H:%M:%SZ%z"
 

@@ -12,7 +12,7 @@ SHOW_TAGS=$(shell git log --oneline --decorate=short)
 
 
 date:
-	echo $(DATE)
+	date "+%Y-%m-%dT%H:%M:%SZ%z"
 
 git_version:
 	echo $(GIT_TAG)

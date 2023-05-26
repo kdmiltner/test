@@ -15,16 +15,9 @@ jobs:
 
     - name: Get release status
       run: |
-        echo "DATE=$(date "+%Y-%m-%dT%H:%M:%SZ%z")" >> $GITHUB_ENV
-        echo ${{ env.DATE }}
-
-    # - name: Set New Version
-    #   run: 
-    #     echo "NEW_VERSION=$(make code_version)" >> $GITHUB_ENV
-
-    # - name: Set Date
-    #   run:
-    #     echo "DATE=$(make date)" >> $GITHUB_ENV
+        echo "GH_VERSION=$(make git_version)" >> $GITHUB_ENV
+        echo "NEW_VERSION=$(make code_version)" >> $GITHUB_ENV
+        echo "DATE=$(make date)" >> $GITHUB_ENV
 
     # - name: Create release (if new version)
     #   if: ${{ env.RESULT }} == 'PASS'

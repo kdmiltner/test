@@ -6,10 +6,10 @@ on:
 
 
 jobs:
-  build: 
+  setup: 
     runs-on: ubuntu-latest
-    
     steps:
+    - id: setup
     - name: Checkout Code
       uses: actions/checkout@v3
 
@@ -26,11 +26,11 @@ jobs:
         echo "NEW_VERSION<<$EOF" >> "$GITHUB_ENV"
         make code_version >> "$GITHUB_ENV"
         echo "$EOF" >> "$GITHUB_ENV"
-    
+
     - name: Echo Environment Variables
       run: |
-        echo {{ env.DATE }}
-        echo {{ env.NEW_VERSION }}
+        echo $DATE
+        echo $NEW_VERSION
 
     - name: Create release (if new version)
       if: ${{ env.RESULT }} == 'PASS'

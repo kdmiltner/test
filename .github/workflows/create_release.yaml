@@ -13,19 +13,20 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Get release status
-      run: |
-        echo "GH_VERSION=$(make git_version)" >> $GITHUB_ENV
-        echo "NEW_VERSION=$(make code_version)" >> $GITHUB_ENV
-        echo "DATE=$(make date)" >> $GITHUB_ENV
-
-    # - name: Create release (if new version)
-    #   if: ${{ env.RESULT }} == 'PASS'
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.TOKEN }}
+    # - name: Get release status
     #   run: |
-    #     echo "curl -L -X POST -H "Accept: application/vnd.github+json" \
-    #       -H "Authorization: Bearer ${{ env.GITHUB_TOKEN }}" \
-    #       -H "X-GitHub-Api-Version: 2022-11-28" \``
-    #       https://api.github.com/repos/kdmiltner/test/releases \
-    #       -d '{"tag_name":"$(strip ${{ env.NEW_VERSION }})","name":"$(strip ${{ env.NEW_VERSION }})","body":"Deployed on ${{ env.DATE }}","draft":false,"prerelease":false,"generate_release_notes":true}')
+    #     echo "GH_VERSION=$(make git_version)" >> $GITHUB_ENV
+    #     echo "NEW_VERSION=$(make code_version)" >> $GITHUB_ENV
+        
+
+    - name: Create release (if new version)
+      if: ${{ env.RESULT }} == 'PASS'
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      run: |
+        echo "DATE=$(make date)" >> $GITHUB_ENV
+        echo "curl -L -X POST -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ env.GITHUB_TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \``
+          https://api.github.com/repos/kdmiltner/test/releases \
+          -d '{"tag_name":"$(strip ${{ env.NEW_VERSION }})","name":"$(strip ${{ env.NEW_VERSION }})","body":"Deployed on ${{ env.DATE }}","draft":false,"prerelease":false,"generate_release_notes":true}')

@@ -11,16 +11,10 @@ jobs:
   build: 
     runs-on: ubuntu-latest
     steps:
-    - name: Install git 
-      run: |
-        apt-get install -y git
-        git --version
-        echo "Path is ... $PATH"
-        PATH=$PATH:$(which git)
-        echo "Path is ... $PATH"
-    
     - name: Checkout Code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
 
     - name: Set Date
       run: |

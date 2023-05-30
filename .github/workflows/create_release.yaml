@@ -11,6 +11,14 @@ jobs:
   build: 
     runs-on: ubuntu-latest
     steps:
+    - name: Install git 
+      run: |
+        apt-get install -y git
+        git --version
+        echo "Path is ... $PATH"
+        PATH=$PATH:$(which git)
+        echo "Path is ... $PATH"
+    
     - name: Checkout Code
       uses: actions/checkout@v3
 
@@ -38,6 +46,7 @@ jobs:
     
     - name: Compare Versions
       run: |
+      git fetch --all
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         echo "RESULT<<$EOF" >> "$GITHUB_ENV"
         make compare_versions >> "$GITHUB_ENV"

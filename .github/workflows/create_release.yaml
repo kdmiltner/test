@@ -33,13 +33,12 @@ jobs:
     - name: Set Git Version
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        echo "GIT_VERSION<<$EOF" >> "$GITHUB_ENV"
+        echo "GH_VERSION<<$EOF" >> "$GITHUB_ENV"
         make git_version
         echo "$EOF" >> "$GITHUB_ENV"
     
     - name: Compare Versions
       run: |
-        git fetch --all
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         echo "RESULT<<$EOF" >> "$GITHUB_ENV"
         make compare_versions >> "$GITHUB_ENV"
@@ -49,7 +48,7 @@ jobs:
       run: |
         echo $DATE
         echo $CODE_VERSION
-        echo $GIT_VERSION
+        echo $GH_VERSION
         echo $RESULT
 
     - name: Create release (if new version)

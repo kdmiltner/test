@@ -46,7 +46,7 @@ jobs:
     
     - name: Compare Versions
       run: |
-      git fetch --all
+        git fetch --all
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         echo "RESULT<<$EOF" >> "$GITHUB_ENV"
         make compare_versions >> "$GITHUB_ENV"

@@ -36,7 +36,7 @@ jobs:
         echo "REPO_VERSION<<$EOF" >> "$GITHUB_ENV"
         make git_version
         echo "$EOF" >> "$GITHUB_ENV"
-    
+
     - name: Compare Versions
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)

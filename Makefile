@@ -3,7 +3,7 @@ FILE=_version # Reference to file that maintains the version within our codebase
 CODE_VERSION=$(shell cat ${FILE} | awk '{print substr($$1,2,5)}') # Get version that's set in our codebase
 NEW_VERSION=$(CODE_VERSION)
 DATE=$(shell date "+%Y-%m-%dT%H:%M:%SZ%z")
-GIT_TAG=$(shell git describe --tags | awk '{print substr($$1,1,5)}') # Get the Git Tag, which represents the version set in Git
+GIT_TAG=$(shell git describe --tags | awk '{print substr($$1,2,5)}') # Get the Git Tag, which represents the version set in Git
 TOKEN=
 CREATE_RELEASE=$(shell curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $(TOKEN)" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/kdmiltner/test/releases -d '{"tag_name":"v$(strip $(NEW_VERSION))","target_commitish":"main","name":"v$(strip $(NEW_VERSION))","body":"Deployed on $(DATE)","draft":false,"prerelease":false,"generate_release_notes":true}')
 SHOW_TAGS=$(shell git log --oneline --decorate=short)

@@ -33,7 +33,7 @@ jobs:
     - name: Set Git Version
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        echo "GH_VERSION<<$EOF" >> "$GITHUB_ENV"
+        echo "REPO_VERSION<<$EOF" >> "$GITHUB_ENV"
         make git_version
         echo "$EOF" >> "$GITHUB_ENV"
     
@@ -48,7 +48,7 @@ jobs:
       run: |
         echo $DATE
         echo $CODE_VERSION
-        echo $GH_VERSION
+        echo $REPO_VERSION
         echo $RESULT
 
     - name: Create release (if new version)

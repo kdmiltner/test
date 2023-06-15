@@ -11,7 +11,7 @@ jobs:
   create-release: 
     uses: kdmiltner/test/.github/workflows/create_release.yaml@main
     with:
-      version: ${{ create-release.outputs.version }}
+      version: ${{ outputs.version }}
 
   echo-version:
     runs-on: ubuntu-latest

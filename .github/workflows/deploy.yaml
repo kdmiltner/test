@@ -10,11 +10,9 @@ on:
 jobs:
   create-release: 
     uses: kdmiltner/test/.github/workflows/create_release.yaml@main
-    with:
-      version: ${{ jobs.create-release.outputs.version }}
 
   echo-version:
     runs-on: ubuntu-latest
     steps:
       - name: Echo version
-        run: echo ${{ needs.create-release.outputs.version }}
+        run: echo ${{ jobs.create-release.outputs.version }}

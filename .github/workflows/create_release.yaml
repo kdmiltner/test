@@ -67,4 +67,4 @@ jobs:
     - name: Echo Version to Outputs
       id: version
       run: |
-        echo "version=$CODE_VERSION" >> "$GITHUB_OUTPUT"
+        echo "version=${{ env.CODE_VERSION }}" >> "$GITHUB_OUTPUT"

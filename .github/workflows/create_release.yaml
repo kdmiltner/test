@@ -11,10 +11,6 @@ on:
         description: 'Test'
         required: false
         default: 'main'
-    outputs:
-      version:
-        description: 'Release version'
-        value: ${{ jobs.create-release.outputs.version }}
 
 env:
   GITHUB_TOKEN: ${{ secrets.TOKEN }}

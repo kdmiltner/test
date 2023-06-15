@@ -54,10 +54,10 @@ jobs:
 
     - name: Echo Environment Variables
       run: |
-        echo $DATE
-        echo $CODE_VERSION
-        echo $REPO_VERSION
-        echo $RESULT
+        echo ${{ env.DATE }}
+        echo ${{ env.CODE_VERSION }}
+        echo ${{ env.REPO_VERSION }}
+        echo ${{ env.RESULT }}
 
     - name: Create release (if new version)
       if: ${{ env.RESULT == 'PASS' }} 

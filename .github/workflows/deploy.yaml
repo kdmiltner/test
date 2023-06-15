@@ -1,0 +1,16 @@
+name: Deploy
+on: 
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Test'
+        required: false
+        default: 'main'
+
+jobs:
+  create-release: 
+    uses: kdmiltner/test/.github/workflows/create_release.yaml@main
+
+  echo-version:
+    runs-on: ubuntu-latest
+    run: echo ${{ jobs.create-release.outputs.version }}

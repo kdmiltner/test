@@ -13,4 +13,6 @@ jobs:
 
   echo-version:
     runs-on: ubuntu-latest
-    run: echo ${{ jobs.create-release.outputs.version }}
+    steps:
+      - name: Echo version
+        run: echo ${{ jobs.create-release.outputs.version }}

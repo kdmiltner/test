@@ -11,6 +11,10 @@ on:
         description: 'Test'
         required: false
         default: 'main'
+    outputs:
+      version:
+        description: 'Release version'
+        value: ${{ jobs.create-release.outputs.version }}
 
 env:
   GITHUB_TOKEN: ${{ secrets.TOKEN }}
@@ -18,6 +22,8 @@ env:
 jobs:
   create-release: 
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3

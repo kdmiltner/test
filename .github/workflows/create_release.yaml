@@ -5,6 +5,12 @@ on:
       version:
         description: 'Release version'
         value: ${{ jobs.create-release.outputs.version }}
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Test'
+        required: false
+        default: 'main'
 
 env:
   GITHUB_TOKEN: ${{ secrets.TOKEN }}

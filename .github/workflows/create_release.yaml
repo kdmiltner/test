@@ -1,14 +1,16 @@
 name: Create Release
 on: 
-  push:
-    branches:
-    - main
+  workflow_call:
+    outputs:
+      version:
+        description: 'Release version'
+        value: ${{ jobs.create-release.outputs.version }}
 
 env:
   GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
 jobs:
-  build: 
+  create-release: 
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code

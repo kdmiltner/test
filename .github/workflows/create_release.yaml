@@ -67,4 +67,4 @@ jobs:
     - name: Echo Version to Outputs
       id: version
       run: |
-        echo "::set-output name=version::$(make git_version)"
+        echo "version=$(make git_version)" >> "$GITHUB_OUTPUT"
